@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <!-- Missing lang attribute on <html> is intentional -->
+  <head>
+    <meta charset="UTF-8">
+    <!-- Disables zoom (bad for low-vision / motor users) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
+    <title>Everyday Supply | Home & Lifestyle</title>
+    <link rel="stylesheet" href="inaccessible-theme.css">
+  </head>
+  <body>
+
+    <!-- Mouse-only nav (spans) + no landmarks/labels -->
+    <nav class="brand-bar">
+      <div class="brand">Everyday Supply</div>
+      <div class="nav-right">
+        <span class="nav-link" onclick="location.hash='#new'">New</span>
+        <span class="nav-link" onclick="location.hash='#kitchen'">Kitchen</span>
+        <span class="nav-link" onclick="location.hash='#bath'">Bath</span>
+        <span class="nav-link" onclick="location.hash='#outdoor'">Outdoor</span>
+        <span class="nav-link" onclick="location.hash='#contact'">Contact</span>
+        <!-- Cart has emoji only, no text alternative -->
+        <span class="cart" onclick="alert('Cart (2)')">🛒</span>
+      </div>
+    </nav>
+
+    <!-- No skip link -->
+    <header class="hero">
+      <div class="hero-text">Refresh your everyday</div>
+      <div class="tagline muted">Simple goods, made well.</div>
+      <!-- Fake CTA as div, no keyboard handler -->
+      <div class="fake-btn" role="button" onclick="alert('Opening weekly deals')">Shop Weekly Deals</div>
+    </header>
+
+    <!-- Layout table used for structure -->
+    <table class="layout">
+      <tr>
+        <td>
+          <!-- Heading level problems (starts at h3, jumps later) -->
+          <h3 id="new">Trending this week</h3>
+
+          <!-- Filter chips are mouse-only divs -->
+          <div class="filters">
+            <div class="filter-label">Filter:</div>
+            <div class="chip" onclick="toggleChip(this)">Under €25</div>
+            <div class="chip" onclick="toggleChip(this)">Eco</div>
+            <div class="chip" onclick="toggleChip(this)">Best Seller</div>
+          </div>
+
+          <!-- Hero banner image with no alt -->
+          <img src="img/shelf.jpg" width="480" height="380">
+
+          <!-- Vague external link without rel -->
+          <p><a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" class="ext">Click here</a> to read about our sourcing practices.</p>
+
+          <!-- Color-only status indicator -->
+          <p class="status">Warehouse status: <span class="dot green"></span></p>
+
+          <!-- Non-unique IDs -->
+          <div id="dup" class="section-label">Daily Picks</div>
+          <div id="dup" class="muted">“Fresh stock arriving today.”</div>
+
+          <!-- Autoplaying promo video, no captions or transcript -->
+          <h1>Christmas Delights</h1>
+          <video autoplay muted playsinline width="640" height="360">
+            <source src="img/xmas.mp4" type="video/mp4">
+          </video>
+          <p class="muted">Autoplay. No captions. No transcript.</p>
+        </td>
+
+        <td>
+          <!-- Product grid with missing alts and tiny icon-only actions -->
+          <div class="section-label big-ish" id="kitchen">Kitchen bestsellers</div>
+          <ul class="product-grid">
+            <li>
+              <div class="product-card">
+                <img src="img/glassware.jpg" class="p-img" width="200" height="140">
+                <div class="p-name">Champagne Flutes</div>
+                <div class="price"><span class="old">€39</span> <span class="new">€29</span></div>
+                <a href="#" class="icon-btn" title="Add">+</a>
+              </div>
+            </li>
+            <li>
+              <div class="product-card">
+                <img src="img/knife.jpg" class="p-img" width="200" height="140">
+                <div class="p-name">Chef’s Knife</div>
+                <div class="price"><span class="new">€59</span></div>
+                <a href="#" class="icon-btn" title="Add">+</a>
+              </div>
+            </li>
+            <li>
+              <div class="product-card">
+                <img src="img/mug.jpg" class="p-img" width="200" height="140">
+                <div class="p-name">Stoneware Mug</div>
+                <div class="price"><span class="new">€12</span></div>
+                <a href="#" class="icon-btn" title="Add">+</a>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Newsletter form with multiple issues -->
+          <div class="section-label big-ish" id="bath">Get the newsletter</div>
+          <form id="signup">
+            <div class="field">
+              <div>Full Name <span class="req">*</span></div>
+              <!-- placeholder used as label; no for/id -->
+              <input type="text" placeholder="Jane Smith">
+            </div>
+
+            <div class="field">
+              <div>Email <span class="req">*</span></div>
+              <input type="text" placeholder="jane@example.com">
+            </div>
+
+            <!-- Error copy not announced (no live region) -->
+            <div id="errors" class="error"></div>
+
+            <!-- Tiny icon-only submit; not a button -->
+            <div class="actions">
+              <a href="#" class="icon-btn" onclick="submitBad(event)" title="Submit">✔</a>
+            </div>
+          </form>
+
+          <!-- Keyboard trap area -->
+          <div id="trap" tabindex="0" aria-label="Keyboard trap zone" class="trap">
+            <div class="section-label">Limited Offers</div>
+            <p>Try to Tab out of this box…</p>
+            <a href="#">Bundle A</a>
+            <button class="btn">Bundle B</button>
+            <input value="Bundle C">
+          </div>
+
+          <!-- Misused ARIA + look-like button links -->
+          <a href="#" role="button" class="btn">Go to Cart</a>
+          <button role="presentation" class="btn">Presented Button</button>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Heading jump -->
+    <h5 id="outdoor">Outdoor & Garden</h5>
+    <p class="muted">Planters, watering cans, and patio textiles.</p>
+
+    <!-- Mouse-only disclosure link -->
+    <p class="muted">Shipping info: <span class="link-like" onclick="alert('Ships in 2–4 days')">learn more</span></p>
+
+    <!-- Low-contrast footer -->
+    <footer class="site-footer">
+      © 2025 Everyday Supply | <a href="#">terms</a> · <a href="#">privacy</a> · <a href="/accessible-website.html">do better</a>
+    </footer>
+
+    <script>
+      function toggleChip(el){ el.classList.toggle('active'); }
+
+      // Visual-only error reporting (no aria-live)
+      function submitBad(e) {
+        e.preventDefault();
+        document.getElementById('errors').textContent = 'Please fill out Name and Email.';
+      }
+
+      // Keyboard trap: keep focus inside #trap
+      (function(){
+        const trap = document.getElementById('trap');
+        trap.addEventListener('keydown', function(e){
+          if (e.key === 'Tab') {
+            e.preventDefault();
+            trap.focus();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

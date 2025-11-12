@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Allow zoom; no user-scalable=no -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Everyday Supply — Home & Lifestyle</title>
+  <link rel="stylesheet" href="accessible-theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="brand-bar" aria-label="Primary">
+      <a class="brand" href="#home" aria-current="page">Everyday Supply</a>
+      <ul class="nav-right">
+        <li><a class="nav-link" href="#new">New</a></li>
+        <li><a class="nav-link" href="#kitchen">Kitchen</a></li>
+        <li><a class="nav-link" href="#bath">Bath</a></li>
+        <li><a class="nav-link" href="#outdoor">Outdoor</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+        <li>
+          <button class="cart-btn" type="button" aria-label="Open cart (2 items)">
+            <span>Cart (2)</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="hero" id="home">
+      <h1 class="hero-text">Refresh your everyday</h1>
+      <p class="tagline">Simple goods, made well.</p>
+      <a class="btn cta" href="#new">Shop weekly deals</a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="new-title" class="container">
+      <h2 id="new-title">Trending this week</h2>
+
+      <!-- Accessible filters -->
+      <form class="filters" aria-labelledby="filters-title">
+        <h3 id="filters-title">Filter products</h3>
+        <fieldset>
+          <legend class="visually-hidden">Filter options</legend>
+          <label class="chip">
+            <input type="checkbox" name="price_under_25"> Under €25
+          </label>
+          <label class="chip">
+            <input type="checkbox" name="eco"> Eco
+          </label>
+          <label class="chip">
+            <input type="checkbox" name="best_seller"> Best seller
+          </label>
+          <button class="btn small" type="submit">Apply</button>
+        </fieldset>
+      </form>
+
+      <!-- Descriptive external link -->
+      <p>
+        <a href="https://www.w3.org/WAI/standards-guidelines/wcag/"
+           class="ext"
+           target="_blank"
+           rel="noopener noreferrer">
+           Read about our sourcing practices (opens in new tab)
+        </a>
+      </p>
+
+      <!-- Image with alt -->
+      <figure class="hero-figure">
+        <img src="img/shelf.jpg" width="480" height="380"
+             alt="Wooden shelf with neatly arranged kitchen jars and containers">
+        <figcaption class="visually-hidden">Lifestyle photo of kitchen storage</figcaption>
+      </figure>
+
+      <!-- Status with text + color -->
+      <p class="status">
+        Warehouse status:
+        <span class="dot green" aria-hidden="true"></span>
+        <span class="status-text">Operating normally</span>
+      </p>
+    </section>
+
+    <section aria-labelledby="kitchen-title" class="container">
+      <h2 id="kitchen-title">Kitchen bestsellers</h2>
+
+      <ul class="product-grid">
+        <li class="product-card">
+          <img src="img/glassware.jpg" class="p-img" width="200" height="140"
+               alt="Set of six champagne flutes">
+          <h3 class="p-name">Champagne Flutes</h3>
+          <p class="price"><span class="old" aria-label="old price">€39</span>
+            <span class="new" aria-label="current price">€29</span></p>
+          <button class="btn add" type="button" data-product="Champagne Flutes"
+                  aria-label="Add Champagne Flutes to cart">Add to cart</button>
+        </li>
+
+        <li class="product-card">
+          <img src="img/knife.jpg" class="p-img" width="200" height="140"
+               alt="20-centimeter stainless steel chef’s knife with black handle">
+          <h3 class="p-name">Chef’s Knife</h3>
+          <p class="price"><span class="new" aria-label="price">€59</span></p>
+          <button class="btn add" type="button" data-product="Chef’s Knife"
+                  aria-label="Add Chef’s Knife to cart">Add to cart</button>
+        </li>
+
+        <li class="product-card">
+          <img src="img/mug.jpg" class="p-img" width="200" height="140"
+               alt="Cream stoneware mug with a speckled finish">
+          <h3 class="p-name">Stoneware Mug</h3>
+          <p class="price"><span class="new" aria-label="price">€12</span></p>
+          <button class="btn add" type="button" data-product="Stoneware Mug"
+                  aria-label="Add Stoneware Mug to cart">Add to cart</button>
+        </li>
+      </ul>
+
+      <!-- Promo video: no autoplay, has controls & captions -->
+      <h2 id="promo">Christmas Delights</h2>
+      <video controls width="640" height="360" aria-describedby="promo-desc">
+        <source src="img/xmas.mp4" type="video/mp4">
+        <track kind="captions" srclang="en" src="captions.vtt" label="English captions" default>
+      </video>
+      <p id="promo-desc" class="muted">Short product montage with captions available.</p>
+    </section>
+
+    <section aria-labelledby="newsletter-title" class="container">
+      <h2 id="newsletter-title">Get the newsletter</h2>
+
+      <form id="signup" novalidate>
+        <!-- Live region for form status -->
+        <div id="form-status" class="visually-hidden" role="status" aria-live="polite"></div>
+
+        <div class="field">
+          <label for="name">Full name <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" required
+                 aria-describedby="name-help">
+          <p id="name-help" class="help">Enter your first and last name.</p>
+          <p id="name-error" class="error" role="alert" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required
+                 aria-describedby="email-help">
+          <p id="email-help" class="help">We’ll only send occasional updates.</p>
+          <p id="email-error" class="error" role="alert" hidden></p>
+        </div>
+
+        <button class="btn" type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="outdoor-title" class="container">
+      <h2 id="outdoor-title">Outdoor &amp; Garden</h2>
+      <p>Planters, watering cans, and patio textiles.</p>
+      <details>
+        <summary>Shipping info</summary>
+        <p>Most items ship in 2–4 days inside the EU.</p>
+      </details>
+    </section>
+
+    <section aria-labelledby="contact" class="container">
+      <h2 id="contact">Contact</h2>
+      <p>Email <a href="mailto:support@everydaysupply.example">support@everydaysupply.example</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    © 2025 Everyday Supply | <a href="#">Terms</a> · <a href="#">Privacy</a>
+  </footer>
+
+  <script>
+    // Announce add-to-cart
+    const cartBtn = document.querySelector('.cart-btn');
+    const status = document.getElementById('form-status');
+
+    document.querySelectorAll('.btn.add').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.product;
+        status.textContent = `${name} added to cart.`;
+        cartBtn.setAttribute('aria-label', `Open cart (items updated)`);
+      });
+    });
+
+    // Basic form validation with accessible errors
+    const form = document.getElementById('signup');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const nameErr = document.getElementById('name-error');
+      const emailErr = document.getElementById('email-error');
+
+      // Name
+      if (!name.value.trim()) {
+        name.setAttribute('aria-invalid', 'true');
+        nameErr.hidden = false; nameErr.textContent = 'Please enter your name.';
+        ok = false;
+      } else {
+        name.removeAttribute('aria-invalid');
+        nameErr.hidden = true; nameErr.textContent = '';
+      }
+
+      // Email
+      const pattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      if (!email.value.trim()) {
+        email.setAttribute('aria-invalid', 'true');
+        emailErr.hidden = false; emailErr.textContent = 'Please enter your email.';
+        ok = false;
+      } else if (!pattern.test(email.value)) {
+        email.setAttribute('aria-invalid', 'true');
+        emailErr.hidden = false; emailErr.textContent = 'Please enter a valid email address.';
+        ok = false;
+      } else {
+        email.removeAttribute('aria-invalid');
+        emailErr.hidden = true; emailErr.textContent = '';
+      }
+
+      const srStatus = document.getElementById('form-status');
+      srStatus.textContent = ok ? 'Subscription successful.' : 'Please fix the indicated errors.';
+      if (ok) form.reset();
+    });
+  </script>
+</body>
+</html>
